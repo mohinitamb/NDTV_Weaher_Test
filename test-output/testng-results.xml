@@ -2,20 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="181016" started-at="2020-06-28T10:55:02Z" finished-at="2020-06-28T10:58:03Z">
+  <suite name="Default suite" duration-ms="3531" started-at="2020-06-28T14:33:26Z" finished-at="2020-06-28T14:33:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="181016" started-at="2020-06-28T10:55:02Z" finished-at="2020-06-28T10:58:03Z">
-      <class name="TestCases.NDTV_Weather_Test">
-        <test-method status="PASS" signature="setDriver()[pri:0, instance:TestCases.NDTV_Weather_Test@47d8ae]" name="setDriver" is-config="true" duration-ms="68" started-at="2020-06-28T16:25:02Z" finished-at="2020-06-28T16:25:02Z">
+    <test name="Default test" duration-ms="3531" started-at="2020-06-28T14:33:26Z" finished-at="2020-06-28T14:33:29Z">
+      <class name="TestCases.API_Test">
+        <test-method status="PASS" signature="GetWeatherDetails()[pri:0, instance:TestCases.API_Test@818063]" name="GetWeatherDetails" duration-ms="3518" started-at="2020-06-28T20:03:26Z" finished-at="2020-06-28T20:03:29Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setDriver -->
-        <test-method status="PASS" signature="gotoNDTVHomePage()[pri:0, instance:TestCases.NDTV_Weather_Test@47d8ae]" name="gotoNDTVHomePage" duration-ms="180927" started-at="2020-06-28T16:25:02Z" finished-at="2020-06-28T16:28:03Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- gotoNDTVHomePage -->
-      </class> <!-- TestCases.NDTV_Weather_Test -->
+        </test-method> <!-- GetWeatherDetails -->
+      </class> <!-- TestCases.API_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

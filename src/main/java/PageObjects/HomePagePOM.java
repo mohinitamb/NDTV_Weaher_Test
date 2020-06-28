@@ -67,4 +67,12 @@ public class HomePagePOM {
 		return flag;
 	}
 
+	public String fetchCityDetails(WebDriver driver) {
+		// TODO Auto-generated method stub
+		String details = driver.findElement(By.cssSelector("div[class=leaflet-popup-content span.selectLabel]")).getText();
+		return null;
+	}
+	
+	
+
 }
