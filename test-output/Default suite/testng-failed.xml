@@ -6,15 +6,4 @@
       <class name="TestCases.NDTV_Weather_Test"/>
     </classes>
   </test> <!-- Default test -->
-  <test name="Default test(failed)">
-    <classes>
-      <class name="TestCases.NDTV_Weather_Test">
-        <methods>
-          <include name="getWeatherForecast"/>
-          <include name="setDriver"/>
-          <include name="gotoNDTVHomePage"/>
-        </methods>
-      </class> <!-- TestCases.NDTV_Weather_Test -->
-    </classes>
-  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

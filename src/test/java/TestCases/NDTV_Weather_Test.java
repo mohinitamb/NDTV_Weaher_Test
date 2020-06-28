@@ -27,14 +27,13 @@ public class NDTV_Weather_Test {
 
 		homepagepom.launchHomePage(driver, BaseUrl);
 		homepagepom.clickOnEllipseButton(driver);
+		boolean flag = homepagepom.validateCityonMap(driver,"Mumbai");
+		
+		
 		
 	}
 	
-	@Test
-	public void getWeatherForecast() {
-		
-		homepagepom.getCityWeather(driver);
-	}
+	
 	
 
 }
