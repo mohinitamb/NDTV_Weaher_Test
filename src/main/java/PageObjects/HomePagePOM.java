@@ -2,6 +2,7 @@ package PageObjects;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,53 +27,71 @@ public class HomePagePOM {
 		// Goto NDTV Home Page
 		driver.get(baseUrl);
 		driver.manage().window().maximize();
-		Thread.sleep(10000);
-		// driver.switchTo().alert().dismiss();
+		CheckAndClosePopUp(driver);
+	    
 
+	}
+
+	private void CheckAndClosePopUp(WebDriver driver) {
+		// TODO Auto-generated method stub
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+	    Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+	    if (alert!=null) {
+		driver.switchTo().alert();
+		driver.findElement(By.linkText("No Thanks")).click();
+	    }
+		
 	}
 
 	public boolean validateCityonMap(WebDriver driver, String cityname) throws InterruptedException {
 		// Validate selecting city on MAP reveals weather
-		// String handel = driver.getWindowHandle();
-		// driver.navigate().to(handel);
 		
-		boolean flag = false;
+        boolean flag = false;
 		new Actions(driver).moveToElement(driver.findElement(By.id("map_canvas")));
-		
+
 		WebElement selectCity = driver.findElement(By.cssSelector("#searchBox"));
 		new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(selectCity)).click();
 		selectCity.sendKeys(cityname);
 		Thread.sleep(2000);
-		ArrayList<WebElement> optionsToSelect = (ArrayList<WebElement>)driver.findElements(By.cssSelector("input[type=checkbox]"));
-		for(WebElement option : optionsToSelect){
-			if(option.getText().equals(cityname)) {
-				System.out.println("Trying to select: "+cityname);
+		ArrayList<WebElement> optionsToSelect = (ArrayList<WebElement>) driver
+				.findElements(By.cssSelector("input[type=checkbox]"));
+		for (WebElement option : optionsToSelect) {
+			if (option.getText().equals(cityname)) {
+				//System.out.println("Trying to select: " + cityname);
 				option.click();
-				System.out.println("Clicked: "+cityname);
-				flag = true;
+				//System.out.println("Clicked: " + cityname);
 				break;
 			}
 		}
-		ArrayList<WebElement> cityToSelect = (ArrayList<WebElement>) driver.findElements(By.cssSelector("div[class=cityText]")) ;
-		//driver.findElement(By.className("cityText")).click();
-		for(WebElement option : cityToSelect){
-			if(option.getText().equals(cityname)) {
-				System.out.println("Trying to select: "+cityname);
-				option.click();
-				System.out.println("Clicked: "+cityname);
-				flag = true;
-				break;
+		
+			ArrayList<WebElement> cityToSelect = (ArrayList<WebElement>) driver
+					.findElements(By.cssSelector("div[class=cityText]"));
+			// driver.findElement(By.className("cityText")).click();
+			for (WebElement option : cityToSelect) {
+				if (option.getText().equals(cityname)) {
+					//System.out.println("Try to select: " + cityname);
+					option.click();
+					System.out.println("Clicked: " + cityname);
+					flag = true;
+					break;
+				}
 			}
-		}
+		
 		return flag;
 	}
 
-	public String fetchCityDetails(WebDriver driver) {
-		// TODO Auto-generated method stub
-		String details = driver.findElement(By.cssSelector("div[class=leaflet-popup-content span.selectLabel]")).getText();
-		return null;
+	public Weather fetchCityDetails(WebDriver driver) throws InterruptedException {
+		
+		Thread.sleep(5000);
+		String humidity = driver.findElement(By.xpath("//*[@id=\"map_canvas\"]/div[1]/div[6]/div/div[1]/div/div/span[3]")).getText();
+		String temp = driver.findElement(By.xpath("//*[@id=\"map_canvas\"]/div[1]/div[6]/div/div[1]/div/div/span[4]")).getText();
+		
+		int NDTV_humidity = Integer.parseInt(humidity.substring(10,12));
+		int NDTV_temp = Integer.parseInt(temp.substring(17));
+		
+		Weather obj1 = new Weather(NDTV_humidity,NDTV_temp);
+		return obj1;
+		
 	}
-	
-	
 
 }
